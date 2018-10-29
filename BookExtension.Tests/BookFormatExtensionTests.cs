@@ -23,7 +23,7 @@ namespace BookExtension.Tests
 		}
 
 		[TestCase("C# in Depth", "Jon Skeet", "2019", "Author: Jon Skeet, Title: C# in Depth, Year: 2019")]
-		public void Format_ValidData_validResult(string title, string author, string year, string expectedResult)
+		public void Format_ValidData_ValidResult(string title, string author, string year, string expectedResult)
 		{
 			var book = new Book()
 			{

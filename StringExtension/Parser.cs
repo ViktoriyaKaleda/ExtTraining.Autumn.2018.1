@@ -9,10 +9,20 @@ namespace StringExtension
     public static class Parser
     {
 		/// <summary>
-		/// Converts number to passed scale of notation.
+		/// Min number system in which can be letters.
+		/// </summary>
+		private const int minBaseForLetters = 11;
+
+		/// <summary>
+		/// Number subtraction which from digit symbol return integer digit.
+		/// </summary>
+		private const int encodingShift = 55;
+
+		/// <summary>
+		/// Converts number to passed number system.
 		/// </summary>
 		/// <param name="source">String that contains number representation.</param>
-		/// <param name="base">Scale of notation.</param>
+		/// <param name="base">The number system.</param>
 		/// <returns>Number in passed scale of notation.</returns>
         public static int ToDecimal(this string source, int @base)
         {
@@ -37,10 +47,10 @@ namespace StringExtension
 					}
 					else
 					{
-						if (@base < 11 || ToUpper(source[i]) > GetMaxValidLetter(@base))
+						if (@base < minBaseForLetters || ToUpper(source[i]) > GetMaxValidLetter(@base))
 							throw new ArgumentException("Invalid string representation of the number.", nameof(source));
 
-						result += (int)Math.Pow(@base, degree) * (ToUpper(source[i]) - 55);
+						result += (int)Math.Pow(@base, degree) * (ToUpper(source[i]) - encodingShift);
 					}
 				}	
 			}
@@ -59,9 +69,9 @@ namespace StringExtension
 		}
 
 		/// <summary>
-		/// Returns the max valid letter for passed scale of notation.
+		/// Returns the max valid letter for passed number system.
 		/// </summary>
-		/// <param name="base">The scale of notation.</param>
+		/// <param name="base">The number system.</param>
 		/// <returns>The max valid letter for passed scale of notation.</returns>
 		private static char GetMaxValidLetter(int @base)
 		{

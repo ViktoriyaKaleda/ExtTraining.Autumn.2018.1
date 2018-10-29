@@ -1,35 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookLibrary
 {
-    public class Book : IFormattable
+	/// <summary>
+	/// Class that contains book information. All fields are of string type by task condition.
+	/// </summary>
+	public class Book : IFormattable
 	{
+		/// <summary>
+		/// The book title.
+		/// </summary>
         public string Title { get; set; }
 
+		/// <summary>
+		/// The book author.
+		/// </summary>
 		public string Author { get; set; }
 
+		/// <summary>
+		/// The book publishing year.
+		/// </summary>
 		public string Year { get; set; }
 
+		/// <summary>
+		/// The book publishing house.
+		/// </summary>
 		public string PublishingHouse { get; set; }
 
+		/// <summary>
+		/// The book edition.
+		/// </summary>
 		public string Edition { get; set; }
 
+		/// <summary>
+		/// The number of pages.
+		/// </summary>
 		public string Pages { get; set; }
 
+		/// <summary>
+		/// The book price.
+		/// </summary>
 		public string Price { get; set; }
 
+		/// <summary>
+		/// Default format for ToString method.
+		/// </summary>
 		private static string DefaultFormat { get => "AT"; }
 
 		/// <summary>
 		/// Returns string representation of the book.
 		/// </summary>
-		/// <param name="format"></param>
-		/// <param name="formatProvider"></param>
+		/// <param name="format">The format.</param>
+		/// <param name="formatProvider">The format provider.</param>
 		/// <returns>String representation of the book.</returns>
 		public string ToString(string format, IFormatProvider formatProvider = null)
 		{
